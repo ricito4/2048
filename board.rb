@@ -106,7 +106,7 @@ attr_accessor :board
       row.each_with_index do |element, y|
         if element != ["  "]
           if element.value == 2048
-            puts "You are not a failure!"
+            puts "You Did It!"
             return true
           end
         end
@@ -140,7 +140,7 @@ attr_accessor :board
 
       end
     end
-    puts "You are a failure!!!"
+    puts "You Didn't Do It!"
     true
   end
 

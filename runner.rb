@@ -8,7 +8,7 @@ game.print_board
 
 
 until game.finished?
-  string = ""
+  string = "wrong key inputd"
   response= STDIN.gets.chomp()
 
   if response.downcase == "s"
