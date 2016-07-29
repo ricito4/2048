@@ -1,5 +1,6 @@
 require_relative 'board.rb'
 require_relative 'number.rb'
+require_relative 'reset_screen'
 
 game= Board.new
 game.start
@@ -7,30 +8,30 @@ game.print_board
 
 
 until game.finished?
-
+  string = ""
   response= STDIN.gets.chomp()
-  board_snapshot = game.board
+
   if response.downcase == "s"
-    puts "moved left"
+    string= "moved left"
     moved= game.move
     combined= game.add_numbers
 
   elsif response.downcase == "e"
-    puts "moved up"
+    string= "moved up"
     game.transposer
     moved= game.move
     combined= game.add_numbers
     game.transposer
 
   elsif response.downcase == "f"
-    puts "moved right"
+    string= "moved right"
     game.reverser
     moved= game.move
     combined= game.add_numbers
     game.reverser
 
   elsif response.downcase == "d"
-    puts "moved down"
+    string= "moved down"
     game.transposer
     game.reverser
     moved= game.move
@@ -45,6 +46,7 @@ until game.finished?
       game.place_new_number
     end
   end
-
+  reset_screen
   game.print_board
+  puts string
 end
